@@ -49,37 +49,41 @@ Section 1: Data for UVA as an institution
     
 """
 Section 2: Works
+
+There are 39790 affiliated authors at UVA in the dataset. I can only include 10,000 in the results.
+The ability to include all is not currently available in the API (but is in the works)
+
 """
-# request = requests.get(f'https://api.openalex.org/authors?filter=last_known_institution.id:I51556381,cited_by_count:>0')
-# json_data = json.loads(request.text)
-# # does this seem like too many?
-# print(f"# authors with last known affiliation of UVA: {json_data['meta']['count']}")
+request = requests.get(f'https://api.openalex.org/authors?filter=last_known_institution.id:I51556381,cited_by_count:>0')
+json_data = json.loads(request.text)
+# does this seem like too many?
+print(f"# authors with last known affiliation of UVA: {json_data['meta']['count']}")
 
-# #this only gives results for 25 top producing authors
-# print(f"top producing authors at UVA: ")
+#this only gives results for 25 top producing authors
+print(f"top producing authors at UVA: ")
 
-# for author in json_data['results']:
-#     print(author['display_name'])
+for author in json_data['results']:
+    print(author['display_name'])
 
 
-# print("")
-# print(f"Top producer: {json_data['results'][0]['display_name']}")
+print("")
+print(f"Top producer: {json_data['results'][0]['display_name']}")
 
-# print("")
+print("")
 
-# top_producer_id = json_data['results'][0]['id'][21:]
+top_producer_id = json_data['results'][0]['id'][21:]
 
 
 """
 Section 3: Author
 """
 # author ID of Brad Cox = A3037630497
-request = requests.get(f'https://api.openalex.org/authors/A3037630497')
-json_data = json.loads(request.text)
+# request = requests.get(f'https://api.openalex.org/authors/A3037630497')
+# json_data = json.loads(request.text)
 
-print(f"Numbers for {json_data['display_name']}: ")
-print(f"Publications: {json_data['works_count']}")
-print(f"Citations: {json_data['cited_by_count']}")
+# print(f"Numbers for {json_data['display_name']}: ")
+# print(f"Publications: {json_data['works_count']}")
+# print(f"Citations: {json_data['cited_by_count']}")
 
 
 ###START HERE WITH /works
